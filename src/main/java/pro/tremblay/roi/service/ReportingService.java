@@ -19,7 +19,6 @@ import pro.tremblay.roi.service.dto.ReportingDTO;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -199,9 +198,7 @@ public class ReportingService {
     BigDecimal calculateNetDeposits(List<Transaction> transactions) {
         return sum(transactions.stream()
                 .filter(t -> t.getAmount() != null)
-                .peek(o -> System.out.println("a"))
                 .filter(t -> t.getType().equals(TransactionType.deposit) || t.getType().equals(TransactionType.withdrawal))
-                .peek(o -> System.out.println("b"))
                 .map(t -> t.getAmount().multiply(getExchangeRateAtTradeDate(t))));
     }
 
