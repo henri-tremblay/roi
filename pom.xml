@@ -32,6 +32,7 @@
     <jmh.version>1.21</jmh.version>
     <uberjar.name>roi</uberjar.name>
     <spotbugs-maven-plugin.version>3.1.12.2</spotbugs-maven-plugin.version>
+    <jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
   </properties>
 
   <licenses>
@@ -303,6 +304,26 @@
         </executions>
       </plugin>
 
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>${jacoco-maven-plugin.version}</version>
+        <executions>
+          <execution>
+            <id>default-prepare-agent</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>default-report</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
@@ -315,6 +336,11 @@
         <configuration>
           <excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>${jacoco-maven-plugin.version}</version>
       </plugin>
     </plugins>
   </reporting>
