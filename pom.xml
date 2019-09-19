@@ -324,6 +324,11 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.pitest</groupId>
+        <artifactId>pitest-maven</artifactId>
+        <version>1.4.10</version>
+      </plugin>
     </plugins>
   </build>
 
